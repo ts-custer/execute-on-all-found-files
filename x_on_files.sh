@@ -41,7 +41,7 @@ then
   exit 1
 fi
 
-echo "WARNING: You are going to execute program ${program} on all ${suffix} files that can be found in the current directory and its subdirectories recursively!"
+echo "WARNING: You are going to execute program \"${program}\" on all ${suffix} files that can be found in the current directory and its subdirectories recursively!"
 
 safety_break
 
