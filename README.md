@@ -1,6 +1,13 @@
 # execute-on-all-found-files
 A Bash script to execute a custom program on all files of the current directory and its subdirectories (recursively)
 
+## Usage
+
+```
+$ x_on_files.sh  <program>  <suffix>
+```
+
+
 ## Example
 
 Given the following files and directories:
