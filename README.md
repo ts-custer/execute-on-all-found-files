@@ -4,8 +4,9 @@ A Bash script to execute a custom program on all files of the current directory 
 ## Usage
 
 ```
-$ x_on_files.sh  <program>  <suffix>
+$  x_on_files.sh  program  suffix  [further program arguments]
 ```
+The "further program arguments" are optional.
 
 
 ## Example
@@ -46,13 +47,14 @@ You can use options of program "lame" if you use double quotes:
 $ x_on_files.sh "lame --r3mix" .wav
 ```
 
-Before `x_on_files.sh` starts its work you will have to enter a number to confirm:
+Before `x_on_files.sh` starts its work you will see what will be executed and you will have to enter a number to confirm:
 
 ```
-WARNING: You are going to execute program "lame --r3mix" on all .wav files that can be found in the current directory and its subdirectories recursively!
-Enter '8' to proceed..
+You are going to execute the following on all *.wav files that can be found in the current directory and its subdirectories recursively:
+lame --r3mix [*.wav file]
+Enter '8' to confirm..
 ```
-The number you will have to enter will be randomly choiced each time.
+The number you will have to enter will be randomly chosen each time.
 
 After `x_on_files.sh` is finished your files and directories will look like that:
 
@@ -79,6 +81,55 @@ x_on_files.sh "rm -f" .wav
 
 ```
 
+## Example with further program arguments
+
+Given the following files and directories:
+
+```
+pic1.svg
+pic2.png
+dir1-----pic3.svg
+         pic4.png
+         pic5.svg
+dir2-----pic6.png
+         pic7.svg
+         dir3-----pic8.png
+                  pic9.svg
+dir3
+```
+
+You can copy all *.svg files into directory "dir3" with:
+```
+$ x_on_files.sh cp .svg ./dir3
+```
+
+You will see the following message:
+
+```
+You are going to execute the following on all *.svg files that can be found in the current directory and its subdirectories recursively:
+cp [*.svg file] ./dir3
+Enter '2' to confirm..
+```
+... where the number you will have to enter could be different, of course.
+
+After `x_on_files.sh` is finished your files and directories will look like that:
+
+```
+pic1.svg
+pic2.png
+dir1-----pic3.svg
+         pic4.png
+         pic5.svg
+dir2-----pic6.png
+         pic7.svg
+         dir3-----pic8.png
+                  pic9.svg
+dir3-----pic1.svg
+         pic3.svg
+         pic5.svg
+         pic7.svg
+         pic9.svg
+```
 
 
 

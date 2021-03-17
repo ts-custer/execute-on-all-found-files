@@ -21,7 +21,7 @@ function execute_on_files_recursive() {
 
 function safety_break() {
   local x=$(shuf -i 1-9 -n 1)
-  read -r -p "Enter '${x}' to proceed.. " INPUT
+  read -r -p "Enter '${x}' to confirm.. " INPUT
   if [ "${INPUT}" != "${x}" ] # user entered nothing or something else than x
   then
     echo "Execution stopped."
@@ -43,7 +43,7 @@ then
 fi
 
 echo "You are going to execute the following on all *${suffix} files that can be found in the current directory and its subdirectories recursively:"
-echo "${program} *${suffix} ${further_program_args}"
+echo "${program} [*${suffix} file] ${further_program_args}"
 
 safety_break
 
