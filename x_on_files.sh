@@ -12,7 +12,12 @@ function execute_on_files_recursive() {
         execute_on_files_recursive "${file_entry}"
     elif [ -f "${file_entry}" ] && [[ "${file_entry}" =~ \.?${suffix}$ ]]
     then
-      ${program} "${file_entry}" "${further_program_args}"
+      if [ $args_count -eq 2 ]
+      then
+        ${program} "${file_entry}"
+      else
+        ${program} "${file_entry}" "${further_program_args}"
+      fi
     fi
 
   done
@@ -35,6 +40,7 @@ function safety_break() {
 program="${1}"
 suffix="${2}"
 further_program_args="${3}"
+args_count="${#}"
 
 if [[ ${#} -lt 2 ]] || [[ ${#} -gt 3 ]]
 then
